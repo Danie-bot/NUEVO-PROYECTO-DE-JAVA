@@ -1,0 +1,151 @@
+.nav-links a.activo {
+  background-color: #4caf50; 
+  color: white;              
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+/* Contenedor principal */
+.formulario-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+.formulario-container h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #518b0d; }
+
+/* Tarjetas de pase */
+.pases-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+.pase-card { position: relative; background-size: cover; background-position: center; color: white; height: 220px; width: 280px; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.5s ease; }
+.pase-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 0; }
+.pase-card h3, .pase-card p { position: relative; z-index: 1; }
+.pase-card.seleccionada { width: 100%; max-width: 600px; height: 260px; transform: scale(1.05); z-index: 10; }
+.pase-card.oculta { display: none; }
+.pase-card[data-tipo="gym"] { background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b'); }
+.pase-card[data-tipo="gym-piscina"] { background-image: url('../img/piscina.jpg'); }
+.pase-card[data-tipo="premium"] { background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1'); }
+
+/* Texto informativo antes de seleccionar pase */
+.info-preinscripcion {
+  max-width: 700px;
+  margin: 1.5rem auto 2.5rem auto;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #149e59, #013d24);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, background 0.5s ease;
+}
+.info-preinscripcion.show { transform: scale(1.05); }
+.info-preinscripcion p { margin: 0.6rem 0; }
+
+/* Formulario */
+.formulario { display: none; flex-direction: column; align-items: center; gap: 1rem; width: 100%; margin-top: 2rem; }
+.formulario label { width: 100%; max-width: 400px; font-weight: bold; color: #333; text-align: left; }
+.formulario input, .formulario select { width: 100%; max-width: 400px; padding: 0.75rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 6px; transition: border 0.3s ease; }
+.formulario input:focus, .formulario select:focus { border-color: #36f48b; outline: none; }
+.formulario input[type="checkbox"] { width: auto; margin-right: 0.5rem; }
+
+/* Extras */
+.extras { display: flex; flex-direction: column; align-items: flex-start; margin: 0.5rem 0 1rem 0; }
+.extras label { margin-bottom: 0.3rem; }
+
+/* Presupuesto destacado */
+#presupuesto {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem 1.2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #36b8f4, #0e4953);
+  border: 2px solid #110f0f;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: all 0.4s ease;
+}
+#presupuesto.actualizando { transform: scale(1.05); }
+
+/* Botón volver */
+#volver-btn { display: none; background-color: #ffffff; color: #f44336; border: 2px solid #f44336; border-radius: 6px; padding: 0.6rem 1.2rem; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; margin-bottom: 1.5rem; margin-left: auto; margin-right: auto; display: block; }
+#volver-btn:hover { background-color: #f44336; color: white; }
+
+/* Botón enviar */
+.formulario button { width: 100%; max-width: 400px; background-color: #f44336; color: white; padding: 0.9rem; font-size: 1rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease; }
+.formulario button:hover { background-color: #d32f2f; }
+.formulario a { color: #f44336; text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .formulario-container { margin: 1rem; padding: 1.5rem; }
+  .pases-container { flex-direction: column; align-items: center; }
+  .pase-card { width: 100%; max-width: 90%; }
+  .pase-card.seleccionada { width: 90%; }
+}
+
+/* ===== EXTRAS  ===== */
+.extras {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: #ebe0e0; 
+  border: 2px solid #f44336;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  max-width: 400px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación al pasar el mouse */
+.extras:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Estilo de las opciones individuales */
+.extras label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+/* Estilo cuando se selecciona */
+.extras input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: #f44336;
+}
+
+/* Checkbox */
+.extras input[type="checkbox"] {
+  accent-color: #f44336;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.extras legend {
+  color: #f44336; 
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.mensaje-animo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #4caf50; 
+  margin-top: 1rem;
+  text-align: center;
+}

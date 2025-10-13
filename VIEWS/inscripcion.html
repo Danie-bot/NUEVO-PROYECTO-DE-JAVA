@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inscripción | FitLife Gym</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
+  <link rel="stylesheet" href="../css/Inscripcion.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <div class="container">
+      <h1 class="logo">FitLife</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="inscripcion.html"class="activo">Inscripcion</a></li>
+          <li><a href="clases.html">Clases</a></li>
+          <li><a href="horario.html">Horarios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenedor principal -->
+  <main class="formulario-container">
+    <h2>Elige tu tipo de inscripción</h2>
+
+    <!-- Tarjetas de pase -->
+    <div class="pases-container">
+      <div class="pase-card" data-tipo="gym">
+        <h3>Pase Solo Gym</h3>
+        <h3>25,00€</h3>
+        <p>Acceso completo a sala de musculación, clases dirigidas y zona de cardio.</p>
+      </div>
+      <div class="pase-card" data-tipo="gym-piscina">
+        <h3>Gym + Piscina</h3>
+        <h3>35,00€</h3>
+        <p>Todo lo anterior + uso libre de la piscina en horario abierto.</p>
+      </div>
+      <div class="pase-card" data-tipo="premium">
+        <h3>Pase Premium</h3>
+        <h3>50,00€</h3>
+        <p>Acceso completo al gimnasio, piscina, zona exterior, + clases VIP.</p>
+      </div>
+    </div>
+
+    <!-- Mensaje informativo antes de seleccionar pase -->
+    <div id="info-preinscripcion" class="info-preinscripcion">
+      <p><strong>Descuentos por meses:</strong> 3-5 meses → 5%, 6-11 meses → 10%, 12 o más meses → 15%</p>
+      <p><strong>Extras disponibles:</strong> Entrenamiento personal (+5 €), Acceso a sauna (+3 €), Toalla y kit fitness (+4 €)</p>
+    </div>
+
+  <p class="mensaje-animo">Bienvenidos a la familia FitLife</p>
+
+    <!-- Formulario de inscripción -->
+    <form id="formulario-inscripcion" class="formulario" style="display:none;" action="#" method="POST">
+      <h2>Formulario de Inscripción</h2>
+
+      <input type="hidden" name="tipo_inscripcion" id="tipo_inscripcion">
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required maxlength="15" pattern="[A-Za-z\s]+">
+
+      <label for="apellidos">Apellidos:</label>
+      <input type="text" id="apellidos" name="apellidos" required maxlength="40" pattern="[A-Za-z\s]+">
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" maxlength="9" pattern="\d+">
+
+      <label for="dni">DNI/NIE:</label>
+      <input type="text" id="dni" name="dni" required>
+
+      <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+      <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+
+      <label for="meses">Plazo (meses):</label>
+      <input type="number" id="meses" name="meses" min="1" value="1">
+      <span id="mensaje-descuento" style="color: green; font-weight: bold;"></span>
+
+      <!-- Extras -->
+      <fieldset class="extras">
+        <legend>Extras</legend>
+        <label><input type="checkbox" class="extra" value="5"> Entrenamiento personal (+5 €)</label>
+        <label><input type="checkbox" class="extra" value="3"> Acceso a sauna (+3 €)</label>
+        <label><input type="checkbox" class="extra" value="4"> Toalla y kit fitness (+4 €)</label>
+      </fieldset>
+
+      <label for="pago">Forma de pago:</label>
+      <select id="pago" name="pago" required>
+        <option value="">-- Selecciona una forma de pago --</option>
+        <option value="tarjeta">Tarjeta de crédito/débito</option>
+        <option value="domiciliacion">Domiciliación bancaria</option>
+        <option value="efectivo">Pago en efectivo</option>
+      </select>
+
+      <label for="presupuesto">Presupuesto final:</label>
+      <input type="text" id="presupuesto" name="presupuesto" readonly value="0 €">
+
+      <button type="submit">Enviar inscripción</button>
+    </form>
+
+    <button id="volver-btn" style="display: none;">← Volver a elegir otro pase</button>
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <div class="footer-container">
+      <p>Síguenos en nuestras redes sociales</p>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:contacto@fitlife.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>© 2025 FitLife Gym. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="../JS/inscripcion.js"></script>
+</body>
+</html>
+
+
+
+

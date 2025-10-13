@@ -1,0 +1,17 @@
+[
+  {
+    "titulo": "Nueva clase de Yoga",
+    "fecha": "2025-10-10",
+    "descripcion": "Incorporamos una nueva clase de yoga para todos los niveles."
+  },
+  {
+    "titulo": "Piscina climatizada abierta",
+    "fecha": "2025-10-05",
+    "descripcion": "Nuestra piscina cubierta ya está disponible para todos los socios."
+  },
+  {
+    "titulo": "Promoción de septiembre",
+    "fecha": "2025-09-25",
+    "descripcion": "Inscripciones con un 20% de descuento durante todo septiembre."
+  }
+]
