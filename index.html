@@ -126,11 +126,11 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="/JS/carousel.js"></script>
+  <script src="JS/carousel.js"></script>
   <script>
     // Cargar noticias desde JSON
     document.addEventListener("DOMContentLoaded", () => {
-      fetch("../JSON/noticias.json")
+      fetch("JSON/noticias.json")
         .then(response => response.json())
         .then(noticias => {
           const contenedor = document.getElementById("contenedor-noticias");
