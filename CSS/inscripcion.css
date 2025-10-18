@@ -90,9 +90,9 @@
 }
 
 /* Ejemplos de imágenes */
-.pase-card[data-tipo="gym"] { background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b'); }
+.pase-card[data-tipo="gym"] { background-image: url('../img/bodypump.jpg'); }
 .pase-card[data-tipo="gym-piscina"] { background-image: url('../img/piscina.jpg'); }
-.pase-card[data-tipo="premium"] { background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1'); }
+.pase-card[data-tipo="premium"] { background-image: url('../img/calistenia.jpg'); }
 
 /* ============================
    TEXTO INFORMÁTICO
