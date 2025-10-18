@@ -15,12 +15,7 @@
   transition: background 0.3s ease;
 }
 
-body {
-  margin:0;
-  background:linear-gradient(180deg,var(--bg),#0e1218);
-  color:var(--text);
-  font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-}
+
 
 header {
   background-color: #3c3d3d;
