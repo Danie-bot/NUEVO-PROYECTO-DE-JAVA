@@ -117,12 +117,18 @@
    FORMULARIO
 ============================ */
 .formulario {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
   width: 100%;
-  margin-top: 2rem;
+  max-width: 400px;
+  padding: 1rem 1.2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #36b8f4, #0e4953);
+  border: 2px solid #110f0f;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: all 0.4s ease;
 }
 
 .formulario label {
