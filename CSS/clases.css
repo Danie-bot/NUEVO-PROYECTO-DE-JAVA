@@ -123,12 +123,6 @@ li { margin:6px 0; }
   font-size:12px;
 }
 
-footer {
-  max-width:1100px;
-  color:var(--muted);
-  text-align:center;
-  width: 100%;
-}
 
 .cta {
   display:inline-flex;
