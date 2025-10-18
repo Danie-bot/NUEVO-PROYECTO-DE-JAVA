@@ -53,7 +53,7 @@ function mostrarError(texto) {
 }
 
 // ------------------ Mapa dinámico ------------------
-const gimnasio = [40.4168, -3.7038]; // Madrid centro
+const gimnasio = [28.4682, -16.2546]; // Santa Cruz de Tenerife
 const map = L.map('map').setView(gimnasio, 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
