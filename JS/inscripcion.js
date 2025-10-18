@@ -1,89 +1,108 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const paseCards = document.querySelectorAll('.pase-card');
-  const form = document.getElementById('formulario-inscripcion');
-  const tipoInput = document.getElementById('tipo_inscripcion');
-  const volverBtn = document.getElementById('volver-btn');
-  const infoPreinscripcion = document.getElementById('info-preinscripcion');
-  const presupuestoInput = document.getElementById('presupuesto');
-  const mesesInput = document.getElementById('meses');
-  const extrasInputs = document.querySelectorAll('.extra');
-  const mensajeDescuento = document.getElementById('mensaje-descuento');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("formulario-inscripcion");
 
-  const Base = {
-    "gym": 25,
-    "gym-piscina": 35,
-    "premium": 50
-  };
+  // --- VALIDACIÓN DEL FORMULARIO ---
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  // Mostrar info-preinscripcion al inicio
-  infoPreinscripcion.style.display = 'block';
-  infoPreinscripcion.classList.add('show');
+    const nombre = document.getElementById("nombre").value.trim();
+    const apellidos = document.getElementById("apellidos").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const dni = document.getElementById("dni").value.trim();
+    const fecha = document.getElementById("fecha_nacimiento").value.trim();
+    const pago = document.getElementById("pago").value;
+
+    const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,15}$/;
+    const regexApellidos = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,40}$/;
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regexTelefono = /^[0-9]{9}$/;
+    const regexDNI = /^([0-9]{8}[A-Za-z]|[XYZxyz][0-9]{7}[A-Za-z])$/;
+
+    document.querySelectorAll(".error-msg").forEach(e => e.remove());
+    document.querySelectorAll(".error").forEach(e => e.classList.remove("error"));
+
+    let valido = true;
+
+    const mostrarError = (id, mensaje) => {
+      const input = document.getElementById(id);
+      input.classList.add("error");
+      const error = document.createElement("p");
+      error.className = "error-msg";
+      error.textContent = mensaje;
+      error.style.color = "red";
+      error.style.fontSize = "0.85em";
+      input.insertAdjacentElement("afterend", error);
+      valido = false;
+    };
+
+    if (!regexNombre.test(nombre)) mostrarError("nombre", "Introduce un nombre válido (solo letras).");
+    if (!regexApellidos.test(apellidos)) mostrarError("apellidos", "Introduce apellidos válidos (solo letras).");
+    if (!regexEmail.test(email)) mostrarError("email", "Correo electrónico no válido.");
+    if (!regexTelefono.test(telefono)) mostrarError("telefono", "Teléfono de 9 dígitos requerido.");
+    if (!regexDNI.test(dni)) mostrarError("dni", "Formato de DNI/NIE incorrecto.");
+    if (fecha === "") mostrarError("fecha_nacimiento", "Selecciona una fecha válida.");
+    if (pago === "") mostrarError("pago", "Selecciona una forma de pago.");
+
+    if (valido) {
+      alert("✅ Inscripción enviada correctamente. ¡Bienvenido a FitLife!");
+      form.reset();
+    }
+  });
+
+  // --- CÁLCULO DE PRESUPUESTO Y DESCUENTOS ---
+  const mesesInput = document.getElementById("meses");
+  const extras = document.querySelectorAll(".extra");
+  const presupuestoInput = document.getElementById("presupuesto");
+  const mensajeDescuento = document.getElementById("mensaje-descuento");
+
+  function calcularPresupuesto() {
+    let base = 0;
+    const tipo = document.getElementById("tipo_inscripcion").value;
+    if (tipo === "gym") base = 25;
+    if (tipo === "gym-piscina") base = 35;
+    if (tipo === "premium") base = 50;
+
+    let meses = parseInt(mesesInput.value) || 1;
+    let descuento = 0;
+
+    if (meses >= 3 && meses <= 5) descuento = 0.05;
+    else if (meses >= 6 && meses <= 11) descuento = 0.1;
+    else if (meses >= 12) descuento = 0.15;
+
+    let totalExtras = 0;
+    extras.forEach(e => {
+      if (e.checked) totalExtras += parseFloat(e.value);
+    });
+
+    let subtotal = (base + totalExtras) * meses;
+    let totalFinal = subtotal - subtotal * descuento;
+
+    mensajeDescuento.textContent = descuento > 0 ? `Descuento aplicado: ${descuento * 100}%` : "";
+    presupuestoInput.value = `${totalFinal.toFixed(2)} €`;
+  }
+
+  mesesInput.addEventListener("input", calcularPresupuesto);
+  extras.forEach(e => e.addEventListener("change", calcularPresupuesto));
+
+  // --- MOSTRAR FORMULARIO AL ELEGIR UN PASE ---
+  const paseCards = document.querySelectorAll(".pase-card");
+  const volverBtn = document.getElementById("volver-btn");
 
   paseCards.forEach(card => {
-    card.addEventListener('click', () => {
-      tipoInput.value = card.dataset.tipo;
-      paseCards.forEach(other => {
-        if (other !== card) other.classList.add('oculta'); 
-        else card.classList.add('seleccionada'); 
-      });
-      form.style.display = 'flex';
-      volverBtn.style.display = 'inline-block';
-
-      // Ocultar info-preinscripcion
-      infoPreinscripcion.classList.remove('show');
-      setTimeout(() => { infoPreinscripcion.style.display = 'none'; }, 300);
-
-      form.scrollIntoView({ behavior: 'smooth' });
-      actualizarPresupuesto();
+    card.addEventListener("click", () => {
+      document.getElementById("tipo_inscripcion").value = card.dataset.tipo;
+      form.style.display = "block";
+      volverBtn.style.display = "block";
+      document.querySelector(".pases-container").style.display = "none";
+      calcularPresupuesto();
     });
   });
 
-  volverBtn.addEventListener('click', () => {
-    paseCards.forEach(card => card.classList.remove('seleccionada', 'oculta'));
-    form.style.display = 'none';
-    volverBtn.style.display = 'none';
-    tipoInput.value = '';
-    presupuestoInput.value = '0 €';
-    mensajeDescuento.textContent = '';
-
-    infoPreinscripcion.style.display = 'block';
-    setTimeout(() => infoPreinscripcion.classList.add('show'), 10);
-
-    document.querySelector('.pases-container').scrollIntoView({ behavior: 'smooth' });
-  });
-
-  // Actualizar presupuesto
-  function actualizarPresupuesto() {
-    const tipo = tipoInput.value;
-    if (!tipo) return;
-    let precio = Base[tipo];
-    let meses = parseInt(mesesInput.value) || 1;
-
-    extrasInputs.forEach(extra => { if (extra.checked) precio += parseFloat(extra.value); });
-
-    let descuento = 0;
-    let textoDescuento = '';
-    if (meses >= 12) { descuento = 0.15; textoDescuento = '¡Tienes un 15% de descuento por 12 o más meses!'; }
-    else if (meses >= 6) { descuento = 0.10; textoDescuento = '¡Tienes un 10% de descuento por 6-11 meses!'; }
-    else if (meses >= 3) { descuento = 0.05; textoDescuento = '¡Tienes un 5% de descuento por 3-5 meses!'; }
-
-    mensajeDescuento.textContent = textoDescuento;
-    presupuestoInput.value = (precio * meses * (1 - descuento)).toFixed(2) + ' €';
-
-    presupuestoInput.classList.add('actualizando');
-    setTimeout(() => presupuestoInput.classList.remove('actualizando'), 300);
-  }
-
-  mesesInput.addEventListener('input', actualizarPresupuesto);
-  extrasInputs.forEach(extra => extra.addEventListener('change', actualizarPresupuesto));
-
-  // Validación simple del formulario
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('¡Formulario enviado correctamente!');
-    form.reset();
-    presupuestoInput.value = '0 €';
-    mensajeDescuento.textContent = '';
+  volverBtn.addEventListener("click", () => {
+    form.style.display = "none";
+    volverBtn.style.display = "none";
+    document.querySelector(".pases-container").style.display = "flex";
   });
 });
 

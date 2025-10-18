@@ -17,7 +17,7 @@
       <nav>
         <ul class="nav-links">
           <li><a href="../index.html">Inicio</a></li>
-          <li><a href="#inscripcion.html"class="activo">Inscripcion</a></li>
+          <li><a href="inscripcion.html" class="activo">Inscripción</a></li>
           <li><a href="clases.html">Clases</a></li>
           <li><a href="horario.html">Horarios</a></li>
           <li><a href="contacto.html">Contacto</a></li>
@@ -49,31 +49,31 @@
       </div>
     </div>
 
-    <!-- Mensaje informativo antes de seleccionar pase -->
+    <!-- Info -->
     <div id="info-preinscripcion" class="info-preinscripcion">
       <p><strong>Descuentos por meses:</strong> 3-5 meses → 5%, 6-11 meses → 10%, 12 o más meses → 15%</p>
       <p><strong>Extras disponibles:</strong> Entrenamiento personal (+5 €), Acceso a sauna (+3 €), Toalla y kit fitness (+4 €)</p>
     </div>
 
-  <p class="mensaje-animo">Bienvenidos a la familia FitLife</p>
+    <p class="mensaje-animo">¡Bienvenido a la familia FitLife!</p>
 
-    <!-- Formulario de inscripción -->
+    <!-- Formulario -->
     <form id="formulario-inscripcion" class="formulario" style="display:none;" action="#" method="POST">
       <h2>Formulario de Inscripción</h2>
 
       <input type="hidden" name="tipo_inscripcion" id="tipo_inscripcion">
 
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required maxlength="15" pattern="[A-Za-z\s]+">
+      <input type="text" id="nombre" name="nombre" required maxlength="15">
 
       <label for="apellidos">Apellidos:</label>
-      <input type="text" id="apellidos" name="apellidos" required maxlength="40" pattern="[A-Za-z\s]+">
+      <input type="text" id="apellidos" name="apellidos" required maxlength="40">
 
       <label for="email">Correo electrónico:</label>
       <input type="email" id="email" name="email" required>
 
       <label for="telefono">Teléfono:</label>
-      <input type="tel" id="telefono" name="telefono" maxlength="9" pattern="\d+">
+      <input type="tel" id="telefono" name="telefono" maxlength="9" required>
 
       <label for="dni">DNI/NIE:</label>
       <input type="text" id="dni" name="dni" required>
@@ -110,7 +110,7 @@
     <button id="volver-btn" style="display: none;">← Volver a elegir otro pase</button>
   </main>
 
-  <!-- Pie de página -->
+  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <p>Síguenos en nuestras redes sociales</p>
@@ -127,6 +127,7 @@
   <script src="../JS/inscripcion.js"></script>
 </body>
 </html>
+
 
 
 
