@@ -1,66 +1,212 @@
+/* ============================
+   NAVEGACIÓN
+============================ */
 .nav-links a.activo {
   background-color: #4caf50; 
   color: white;              
   font-weight: bold;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background 0.3s ease;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.nav-links a:hover {
+  background-color: #45a049;
+  color: #fff;
 }
 
-/* Contenedor principal */
+/* ============================
+   CONTENEDOR PRINCIPAL
+============================ */
 .formulario-container {
-  max-width: 800px;
+  max-width: 850px;
   margin: 3rem auto;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 2rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.formulario-container h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #518b0d; }
 
-/* Tarjetas de pase */
-.pases-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
-.pase-card { position: relative; background-size: cover; background-position: center; color: white; height: 220px; width: 280px; border-radius: 12px; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.5s ease; }
-.pase-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 0; }
-.pase-card h3, .pase-card p { position: relative; z-index: 1; }
-.pase-card.seleccionada { width: 100%; max-width: 600px; height: 260px; transform: scale(1.05); z-index: 10; }
-.pase-card.oculta { display: none; }
+.formulario-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #518b0d;
+}
+
+/* ============================
+   TARJETAS DE PASE
+============================ */
+.pases-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.pase-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 220px;
+  width: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pase-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 0;
+  border-radius: 16px;
+}
+
+.pase-card h3, .pase-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0.2rem 0;
+}
+
+.pase-card.seleccionada {
+  transform: scale(1.05);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+  z-index: 10;
+}
+
+.pase-card.oculta {
+  display: none;
+}
+
+/* Ejemplos de imágenes */
 .pase-card[data-tipo="gym"] { background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b'); }
 .pase-card[data-tipo="gym-piscina"] { background-image: url('../img/piscina.jpg'); }
 .pase-card[data-tipo="premium"] { background-image: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1'); }
 
-/* Texto informativo antes de seleccionar pase */
+/* ============================
+   TEXTO INFORMÁTICO
+============================ */
 .info-preinscripcion {
-  max-width: 700px;
+  max-width: 720px;
   margin: 1.5rem auto 2.5rem auto;
   padding: 1rem 1.5rem;
   background: linear-gradient(135deg, #149e59, #013d24);
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: bold;
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
   transition: transform 0.3s ease, background 0.5s ease;
 }
-.info-preinscripcion.show { transform: scale(1.05); }
-.info-preinscripcion p { margin: 0.6rem 0; }
 
-/* Formulario */
-.formulario { display: none; flex-direction: column; align-items: center; gap: 1rem; width: 100%; margin-top: 2rem; }
-.formulario label { width: 100%; max-width: 400px; font-weight: bold; color: #333; text-align: left; }
-.formulario input, .formulario select { width: 100%; max-width: 400px; padding: 0.75rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 6px; transition: border 0.3s ease; }
-.formulario input:focus, .formulario select:focus { border-color: #36f48b; outline: none; }
-.formulario input[type="checkbox"] { width: auto; margin-right: 0.5rem; }
+.info-preinscripcion p { margin: 0.5rem 0; }
 
-/* Extras */
-.extras { display: flex; flex-direction: column; align-items: flex-start; margin: 0.5rem 0 1rem 0; }
-.extras label { margin-bottom: 0.3rem; }
+/* ============================
+   FORMULARIO
+============================ */
+.formulario {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  margin-top: 2rem;
+}
 
-/* Presupuesto destacado */
+.formulario label {
+  width: 100%;
+  max-width: 420px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  margin-bottom: 0.3rem;
+}
+
+.formulario input, 
+.formulario select {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.85rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+  border-color: #36f48b;
+  outline: none;
+  box-shadow: 0 0 8px rgba(54, 244, 139, 0.4);
+}
+
+.formulario input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* ============================
+   EXTRAS
+============================ */
+.extras {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: #f9f9f9;
+  border: 2px solid #f44336;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  max-width: 420px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.extras:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+
+.extras label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.extras input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: #f44336;
+}
+
+.extras legend {
+  color: #f44336;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* ============================
+   PRESUPUESTO
+============================ */
 #presupuesto {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   padding: 1rem 1.2rem;
   font-size: 1.8rem;
   font-weight: bold;
@@ -72,80 +218,81 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
   transition: all 0.4s ease;
 }
+
 #presupuesto.actualizando { transform: scale(1.05); }
 
-/* Botón volver */
-#volver-btn { display: none; background-color: #ffffff; color: #f44336; border: 2px solid #f44336; border-radius: 6px; padding: 0.6rem 1.2rem; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; margin-bottom: 1.5rem; margin-left: auto; margin-right: auto; display: block; }
-#volver-btn:hover { background-color: #f44336; color: white; }
-
-/* Botón enviar */
-.formulario button { width: 100%; max-width: 400px; background-color: #f44336; color: white; padding: 0.9rem; font-size: 1rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease; }
-.formulario button:hover { background-color: #d32f2f; }
-.formulario a { color: #f44336; text-decoration: underline; }
-
-/* Responsive */
-@media (max-width: 600px) {
-  .formulario-container { margin: 1rem; padding: 1.5rem; }
-  .pases-container { flex-direction: column; align-items: center; }
-  .pase-card { width: 100%; max-width: 90%; }
-  .pase-card.seleccionada { width: 90%; }
-}
-
-/* ===== EXTRAS  ===== */
-.extras {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  background: #ebe0e0; 
-  border: 2px solid #f44336;
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  max-width: 400px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Animación al pasar el mouse */
-.extras:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* Estilo de las opciones individuales */
-.extras label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #fff;
-  padding: 0.5rem 0.8rem;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-  cursor: pointer;
-}
-
-/* Estilo cuando se selecciona */
-.extras input[type="checkbox"]:checked + span {
-  font-weight: bold;
+/* ============================
+   BOTONES
+============================ */
+#volver-btn {
+  background-color: #ffffff;
   color: #f44336;
-}
-
-/* Checkbox */
-.extras input[type="checkbox"] {
-  accent-color: #f44336;
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-.extras legend {
-  color: #f44336; 
-  font-size: 1.2rem;
+  border: 2px solid #f44336;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
+  cursor: pointer;
+  margin: 1rem auto;
+  display: block;
+  transition: all 0.3s ease;
 }
 
+#volver-btn:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.formulario button {
+  width: 100%;
+  max-width: 420px;
+  background-color: #f44336;
+  color: white;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.formulario button:hover {
+  background-color: #d32f2f;
+  transform: scale(1.02);
+}
+
+/* ============================
+   TEXTO MOTIVADOR
+============================ */
 .mensaje-animo {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #4caf50; 
+  color: #4caf50;
   margin-top: 1rem;
   text-align: center;
 }
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 650px) {
+  .formulario-container {
+    margin: 1rem;
+    padding: 2rem 1rem;
+  }
+
+  .pases-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pase-card {
+    width: 90%;
+  }
+
+  .pase-card.seleccionada {
+    width: 90%;
+  }
+}
+
