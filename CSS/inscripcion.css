@@ -89,7 +89,7 @@
   display: none;
 }
 
-/* Ejemplos de imágenes */
+
 .pase-card[data-tipo="gym"] { background-image: url('../img/bodypump.jpg'); }
 .pase-card[data-tipo="gym-piscina"] { background-image: url('../img/piscina.jpg'); }
 .pase-card[data-tipo="premium"] { background-image: url('../img/calistenia.jpg'); }
