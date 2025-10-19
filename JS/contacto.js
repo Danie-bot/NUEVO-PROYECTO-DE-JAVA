@@ -63,7 +63,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 L.marker(gimnasio)
   .addTo(map)
-  .bindPopup("<b>FitLife Gym</b><br>Calle Salud y Deporte, 45, Madrid")
+  .bindPopup("<b>FitLife Gym</b><br>Calle Salud y Deporte, 45, Tenerife")
   .openPopup();
 
 // Botón para calcular ruta
