@@ -1,0 +1,75 @@
+/* --- Sección Zonas del Gimnasio --- */
+#zonas {
+  padding: 50px 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+#zonas h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #27ae60;
+}
+.zonas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.zona {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.zona:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.zona img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.zona h3 {
+  color: #27ae60;
+  margin: 15px 0 10px;
+}
+.zona p {
+  padding: 0 15px 20px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* --- Sección Política de Uso Responsable --- */
+#politica {
+  padding: 50px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+#politica h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #27ae60;
+}
+.politica-list {
+  list-style-type: disc;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 20px;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+  .zonas-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .zona {
+    width: 90%;
+  }
+}
